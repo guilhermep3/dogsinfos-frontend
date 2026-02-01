@@ -11,28 +11,22 @@ export const DogsSection = () => {
   const [selectedClassification, setSelectedClassification] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState<string[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<string[]>([]);
-  const { data, isLoading, isError } = useDogs()
+  const { data, isLoading } = useDogs()
 
-  useEffect(() => {
-    if (data) {
-      console.log("data", data);
-    }
-  }, [data])
   return (
     <section id="dogs">
       {!data || isLoading
-        ? <Loading />
-        :
+        ? <Loading /> :
         <div className={containerStyle}>
           <div className="flex items-start">
-            <AsideDogs dogsData={data}
+            <AsideDogs dogsData={data?.pages[0].dogs}
               selectedSize={selectedSize} setSelectedSize={setSelectedSize}
               selectedClassification={selectedClassification} setSelectedClassification={setSelectedClassification}
               selectedColor={selectedColor} setSelectedColor={setSelectedColor}
               selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
             />
             <MainDogs
-              dogsData={data}
+              dogsData={data?.pages[0].dogs}
               selectedSize={selectedSize}
               selectedClassification={selectedClassification}
               selectedColor={selectedColor}

@@ -23,7 +23,7 @@ export const MainDogs = ({ dogsData, selectedSize, selectedClassification, selec
   });
 
   const sortedDogs = [...filteredDogs].sort((a, b) => {
-    if(sortBy === 'id'){
+    if (sortBy === 'id') {
       return a.id - b.id;
     } else if (sortBy === 'breed') {
       return a.breed.localeCompare(b.breed);

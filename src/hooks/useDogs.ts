@@ -1,17 +1,40 @@
 import { DogType } from "@/types/dogType";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
+
+type DogsResponse = {
+  dogs: DogType[];
+  page: number;
+  totalPages: number;
+};
 
 export function useDogs() {
-  return useQuery({
+  return useInfiniteQuery<
+    DogsResponse, Error, { pageParams: number[], pages: DogsResponse[] }, string[], number
+  >({
     queryKey: ['dogs'],
-    queryFn: async () => {
+    queryFn: async ({ pageParam = 1 }: { pageParam?: number }) => {
       const API_URL = process.env.NEXT_PUBLIC_API_URL!;
-      const res = await fetch(`${API_URL}/dogs?page=1&limit=40`);
+      const res = await fetch(`${API_URL}/dogs?page=${pageParam}&limit=20`);
+
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }
-      const data = await res.json();
-      return data as DogType[];
-    }
-  })
+      const data = await res.json() as Promise<DogsResponse>;
+      console.log('Fetched data:', data);
+      return data;
+    },
+    getNextPageParam: (lastPage: DogsResponse) => {
+      if (lastPage.page < lastPage.totalPages) {
+        return lastPage.page + 1;
+      }
+      return undefined;
+    },
+    getPreviousPageParam: (firstPage: DogsResponse) => {
+      if (firstPage.page > 1) {
+        return firstPage.page - 1;
+      }
+      return undefined;
+    },
+    initialPageParam: 1,
+  });
 }
