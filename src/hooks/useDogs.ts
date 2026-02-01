@@ -1,7 +1,7 @@
 import { DogType } from "@/types/dogType";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-type DogsResponse = {
+export type DogsResponse = {
   dogs: DogType[];
   page: number;
   totalPages: number;
@@ -12,14 +12,14 @@ export function useDogs() {
     DogsResponse, Error, { pageParams: number[], pages: DogsResponse[] }, string[], number
   >({
     queryKey: ['dogs'],
-    queryFn: async ({ pageParam = 1 }: { pageParam?: number }) => {
+    queryFn: async ({ pageParam }: { pageParam: number }) => {
       const API_URL = process.env.NEXT_PUBLIC_API_URL!;
       const res = await fetch(`${API_URL}/dogs?page=${pageParam}&limit=20`);
 
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }
-      const data = await res.json() as Promise<DogsResponse>;
+      const data = await res.json() as DogsResponse;
       console.log('Fetched data:', data);
       return data;
     },

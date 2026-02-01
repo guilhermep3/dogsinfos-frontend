@@ -11,7 +11,11 @@ export const DogsSection = () => {
   const [selectedClassification, setSelectedClassification] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState<string[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<string[]>([]);
-  const { data, isLoading } = useDogs()
+  const { data, isLoading, fetchNextPage, fetchPreviousPage, hasNextPage, hasPreviousPage } = useDogs()
+
+  useEffect(() => {
+    console.log('DogsSection data:', data);
+  }, [data])
 
   return (
     <section id="dogs">
@@ -19,18 +23,21 @@ export const DogsSection = () => {
         ? <Loading /> :
         <div className={containerStyle}>
           <div className="flex items-start">
-            <AsideDogs dogsData={data?.pages[0].dogs}
+            <AsideDogs data={data}
               selectedSize={selectedSize} setSelectedSize={setSelectedSize}
               selectedClassification={selectedClassification} setSelectedClassification={setSelectedClassification}
               selectedColor={selectedColor} setSelectedColor={setSelectedColor}
               selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
             />
-            <MainDogs
-              dogsData={data?.pages[0].dogs}
+            <MainDogs data={data}
               selectedSize={selectedSize}
               selectedClassification={selectedClassification}
               selectedColor={selectedColor}
               selectedCountry={selectedCountry}
+              fetchNextPage={fetchNextPage}
+              fetchPreviousPage={fetchPreviousPage}
+              hasNextPage={hasNextPage}
+              hasPreviousPage={hasPreviousPage}
             />
           </div>
         </div>
