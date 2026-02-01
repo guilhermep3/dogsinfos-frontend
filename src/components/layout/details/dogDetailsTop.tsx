@@ -1,12 +1,12 @@
 import { BlueBg } from "../../svg/blueBg"
-import { dogType } from "@/types/dogType"
+import { DogType } from "@/types/dogType"
 import Image from "next/image";
 import { ArrowUpNarrowWide, Cake, Weight } from "lucide-react";
 import { countryToCode } from "@/utils/countryToCode";
 import flags from "emoji-flags";
 
 type props = {
-  dogData: dogType;
+  dogData: DogType;
 }
 export const DogDetailsTop = ({ dogData }: props) => {
 

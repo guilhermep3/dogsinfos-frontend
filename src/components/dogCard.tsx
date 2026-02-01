@@ -1,4 +1,4 @@
-import { dogType } from "@/types/dogType";
+import { DogType } from "@/types/dogType";
 import { Card, CardContent, CardTitle } from "./ui/card";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -8,7 +8,7 @@ import { countryToCode } from "@/utils/countryToCode";
 import flags from "emoji-flags";
 
 type props = {
-  dogData: dogType;
+  dogData: DogType;
 };
 
 export const DogCard = ({ dogData }: props) => {

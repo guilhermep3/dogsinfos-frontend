@@ -1,9 +1,9 @@
-import { dogType } from "@/types/dogType"
+import { DogType } from "@/types/dogType"
 import { DogDetailsTop } from "./dogDetailsTop";
 import { DogDetailsDesc } from "./dogDetailsDesc";
 
 type props = {
-  dogData: dogType;
+  dogData: DogType;
 }
 export const DogDetails = ({ dogData }: props) => {
 

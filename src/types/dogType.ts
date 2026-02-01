@@ -1,4 +1,4 @@
-export type dogType = {
+export interface DogType {
   id: number;
   breed: string;
   image: string;

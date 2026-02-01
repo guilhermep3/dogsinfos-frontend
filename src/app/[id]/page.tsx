@@ -3,7 +3,7 @@ import { DogDetails } from "@/components/layout/details/dogDetails";
 import { Header } from "@/components/layout/header";
 import { Loading } from "@/components/loading";
 import { LogoPulsing } from "@/components/logoPulsing";
-import { dogType } from "@/types/dogType";
+import { DogType } from "@/types/dogType";
 import { containerStyle } from "@/utils/styles";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 const Page = () => {
   const { id } = useParams();
-  const [dogData, setDogData] = useState<dogType | null>(null);
+  const [dogData, setDogData] = useState<DogType | null>(null);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_LINK}${id}`)

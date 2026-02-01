@@ -1,10 +1,10 @@
-import { dogType } from "@/types/dogType";
+import { DogType } from "@/types/dogType";
 import { MainDogsTop } from "./mainDogsTop";
 import { DogCard } from "../dogCard";
 import { useState } from "react";
 
 type props = {
-  dogsData: dogType[];
+  dogsData: DogType[];
   selectedSize: string[];
   selectedClassification: string[];
   selectedColor: string[];

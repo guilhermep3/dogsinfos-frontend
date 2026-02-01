@@ -1,8 +1,8 @@
 import { GrayBg } from "@/components/svg/grayBg";
-import { dogType } from "@/types/dogType";
+import { DogType } from "@/types/dogType";
 
 type props = {
-  dogData: dogType;
+  dogData: DogType;
 }
 export const DogDetailsDesc = ({ dogData }: props) => {
 

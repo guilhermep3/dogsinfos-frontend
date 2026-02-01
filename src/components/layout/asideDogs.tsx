@@ -1,14 +1,14 @@
 "use client"
 import { useEffect, useState } from "react";
 import { AsideItem } from "../asideItem";
-import { dogType } from "@/types/dogType";
+import { DogType } from "@/types/dogType";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { useMobileAsideStore } from "@/store/mobileAsideStore";
 
 const asideTitleStyle = "p-3 bg-gray-200 border-l-4 border-blue-700 font-bold text-base text-blue-900 cursor-pointer";
 
 type props = {
-  dogsData: dogType[];
+  dogsData: DogType[];
   selectedSize: string[];
   selectedClassification: string[];
   selectedColor: string[];
