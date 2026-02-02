@@ -6,10 +6,10 @@ export default function Page() {
 
   return (
     <div className="relative">
-      <Header/>
-      <HeroSection/>
-      <AdoptSection/>
-      <DogsSection/>
+      <Header />
+      <HeroSection />
+      <AdoptSection />
+      <DogsSection />
     </div>
   )
 }

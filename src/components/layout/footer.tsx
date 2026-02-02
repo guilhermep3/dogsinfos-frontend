@@ -1,4 +1,3 @@
-import { containerStyle } from "@/utils/styles"
 import { Linkedin } from "lucide-react"
 import Link from "next/link"
 
@@ -6,7 +5,7 @@ export const Footer = () => {
 
   return (
     <footer className="bg-gray-300">
-      <div className={containerStyle}>
+      <div className="containerStyle">
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <p className="text-sm text-zinc-800">&copy; Copyright</p>
           <p className="text-sm text-zinc-800">Desenvolvido por <a href="https://github.com/guilhermep3" target="_blank" className="underline">Guilherme Pereira</a>

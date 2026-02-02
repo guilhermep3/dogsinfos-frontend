@@ -2,9 +2,7 @@
 import { DogDetails } from "@/components/layout/details/dogDetails";
 import { Header } from "@/components/layout/header";
 import { Loading } from "@/components/loading";
-import { LogoPulsing } from "@/components/logoPulsing";
 import { DogType } from "@/types/dogType";
-import { containerStyle } from "@/utils/styles";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -25,7 +23,7 @@ const Page = () => {
   return (
     <div className="bg-zinc-100">
       <Header />
-      <div className={containerStyle}>
+      <div className="containerStyle">
         <div className="flex gap-3 pt-14 text-sm text-blue-900">
           <Link href={'/'} className="hover:underline">/Início</Link>
           <Link href={`/${id}`} className="hover:underline">/{dogData?.breed || 'Cachorro'}</Link>

@@ -1,4 +1,3 @@
-import { containerStyle } from "@/utils/styles"
 import { Button } from "../button"
 import Image from "next/image"
 import { ChevronDown, PawPrint } from "lucide-react"
@@ -7,7 +6,7 @@ export const HeroSection = () => {
 
   return (
     <section id="hero" className="h-screen sm:h-full md:h-screen bg-zinc-100 pt-12 md:pt-0">
-      <div className={containerStyle + ' flex flex-col gap-6 md:flex-row h-full pb-0 md:pb-0 overflow-hidden'}>
+      <div className="containerStyle flex flex-col gap-6 md:flex-row h-full pb-0 md:pb-0 overflow-hidden">
         <div className="flex-1 flex flex-col justify-center gap-8 text-center md:text-start">
           <h1 className="text-3xl md:text-5xl font-bold text-blue-900">
             Seja bem-vindo(a) á <br /> <span className="textl-4xl md:text-6xl font-extrabold">DOGSINFOS!</span>

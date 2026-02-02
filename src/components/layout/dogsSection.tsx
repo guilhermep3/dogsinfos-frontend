@@ -1,7 +1,6 @@
 "use client"
-import { containerStyle } from "@/utils/styles"
 import { AsideDogs } from "./asideDogs"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { MainDogs } from "./mainDogs"
 import { Loading } from "../loading"
 import { useDogs } from "@/hooks/useDogs"
@@ -14,15 +13,11 @@ export const DogsSection = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading } = useDogs(page)
 
-  useEffect(() => {
-    console.log('DogsSection data:', data);
-  }, [data])
-
   return (
     <section id="dogs">
       {!data || isLoading
         ? <Loading /> :
-        <div className={containerStyle}>
+        <div className="containerStyle">
           <div className="flex items-start">
             <AsideDogs data={data}
               selectedSize={selectedSize} setSelectedSize={setSelectedSize}

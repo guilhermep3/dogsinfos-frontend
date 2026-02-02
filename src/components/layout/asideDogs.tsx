@@ -5,8 +5,6 @@ import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { useMobileAsideStore } from "@/store/mobileAsideStore";
 import { DogsResponse } from "@/hooks/useDogs";
 
-const asideTitleStyle = "p-3 bg-gray-200 border-l-4 border-blue-700 font-bold text-base text-blue-900 cursor-pointer";
-
 type props = {
   data: DogsResponse;
   selectedSize: string[];
@@ -76,7 +74,7 @@ export const AsideDogs = ({
         <X className="mr-auto cursor-pointer text-black z-40" onClick={() => closeAside()} />
       </div>
       <div className="flex flex-col">
-        <p className={asideTitleStyle}>Tamanho</p>
+        <p className="asideTitleStyle">Tamanho</p>
         <div className="py-2">
           {uniqueSizes.map(size => (
             <AsideItem key={size} label={size}
@@ -84,7 +82,7 @@ export const AsideDogs = ({
             />
           ))}
         </div>
-        <p className={asideTitleStyle}>Classificação</p>
+        <p className="asideTitleStyle">Classificação</p>
         <div className="py-2">
           {(showAllClassifications ? uniqueClassifications : uniqueClassifications.slice(0, 5)).map(classification => (
             <AsideItem key={classification} label={classification}
@@ -93,7 +91,7 @@ export const AsideDogs = ({
           ))}
           {uniqueClassifications.length > 5 && renderToggle(showAllClassifications, () => setShowAllClassifications(!showAllClassifications))}
         </div>
-        <p className={asideTitleStyle}>Cores</p>
+        <p className="asideTitleStyle">Cores</p>
         <div className="py-2">
           {(showAllColors ? uniqueColors : uniqueColors.slice(0, 5)).map(color => (
             <AsideItem key={color} label={color}
@@ -102,7 +100,7 @@ export const AsideDogs = ({
           ))}
           {uniqueColors.length > 5 && renderToggle(showAllColors, () => setShowAllColors(!showAllColors))}
         </div>
-        <p className={asideTitleStyle}>País de origem</p>
+        <p className="asideTitleStyle">País de origem</p>
         <div className="py-2">
           {(showAllCountries ? uniqueCountries : uniqueCountries.slice(0, 5)).map(country => (
             <AsideItem key={country} label={country}

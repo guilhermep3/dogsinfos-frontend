@@ -70,7 +70,7 @@ export const MainDogs = ({
           <ChevronLeft />
         </button>
         <button onClick={onNext}
-        disabled={data.page === data.totalPages}
+          disabled={data.page === data.totalPages}
           className="w-full flex justify-center p-2 bg-blue-500 disabled:opacity-40
           hover:bg-blue-700 hover:text-white rounded-sm transition-all cursor-pointer"
         >

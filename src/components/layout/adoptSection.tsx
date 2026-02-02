@@ -1,4 +1,3 @@
-import { containerStyle } from "@/utils/styles"
 import Image from "next/image"
 import { BlueBg } from "../svg/blueBg"
 
@@ -6,7 +5,7 @@ export const AdoptSection = () => {
 
   return (
     <section>
-      <div className={containerStyle + ' w-full flex justify-center items-center'}>
+      <div className="containerStyle w-full flex justify-center items-center">
         <div className="w-full md:w-4/5 md:h-96 relative flex justify-between items-center flex-col sm:flex-row">
           <BlueBg />
           <div className="w-72 sm:w-fit sm:h-[90%] pl-10">
