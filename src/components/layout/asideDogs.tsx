@@ -3,13 +3,12 @@ import { useEffect, useState } from "react";
 import { AsideItem } from "../asideItem";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { useMobileAsideStore } from "@/store/mobileAsideStore";
-import { InfiniteData } from "@tanstack/react-query";
 import { DogsResponse } from "@/hooks/useDogs";
 
 const asideTitleStyle = "p-3 bg-gray-200 border-l-4 border-blue-700 font-bold text-base text-blue-900 cursor-pointer";
 
 type props = {
-  data: InfiniteData<DogsResponse>;
+  data: DogsResponse;
   selectedSize: string[];
   selectedClassification: string[];
   selectedColor: string[];
