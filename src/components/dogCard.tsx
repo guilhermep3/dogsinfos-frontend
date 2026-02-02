@@ -25,22 +25,19 @@ export const DogCard = ({ dogData }: props) => {
 
   return (
     <Card
-      className="group overflow-hidden p-0! border border-zinc-300 shadow-md hover:shadow-2xl cursor-pointer
+      className="group overflow-hidden p-0! border shadow-md hover:shadow-2xl hover:shadow-zinc-400 cursor-pointer
       transition-all duration-300 hover:scale-105 bg-white rounded-xl"
       onClick={() => router.push(`/${dogData.id}`)}
     >
       <CardContent className="p-0 flex flex-col">
         <div className="relative w-full h-56 sm:h-48 md:h-40 2xl:h-52 overflow-hidden">
-          <Image
-            src={`/dogs/${dogData.image}`}
-            alt={'imagem do cachorro ' + dogData.breed}
-            width={400}
-            height={400}
+          <Image src={`/dogs/${dogData.image}`} alt={'imagem do cachorro ' + dogData.breed}
+            width={400} height={400}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-        <div className="p-5 flex flex-col gap-3">
+        <div className="p-4 flex flex-col gap-3">
           <div className="flex flex-col gap-2">
             <CardTitle className="text-lg font-bold text-slate-800 group-hover:text-blue-700 transition-colors">
               {dogData.breed}

@@ -66,7 +66,7 @@ export const AsideDogs = ({
   );
 
   return (
-    <aside className={`flex flex-col border-0 bg-white shadow-xl transition-all duration-300 ease-in-out
+    <aside className={`flex flex-col border bg-white shadow-xl transition-all duration-300 ease-in-out
       ${isMobile ? 'fixed left-0 right-0 bottom-0 z-50 max-h-[85vh] w-full rounded-t-3xl' : 'sticky top-24 w-72 h-fit rounded-2xl'}
       ${isMobile ? (isAsideOpen ? 'translate-y-0' : 'translate-y-full') : ''}
     `}>
