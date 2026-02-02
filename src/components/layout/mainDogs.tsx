@@ -3,30 +3,25 @@ import { MainDogsTop } from "./mainDogsTop";
 import { DogCard } from "../dogCard";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { InfiniteData } from "@tanstack/react-query";
 import { DogsResponse } from "@/hooks/useDogs";
 
 type Props = {
-  data: InfiniteData<DogsResponse>;
+  data: DogsResponse;
   selectedSize: string[];
   selectedClassification: string[];
   selectedColor: string[];
   selectedCountry: string[];
-  fetchNextPage: () => void;
-  fetchPreviousPage: () => void;
-  hasNextPage?: boolean;
-  hasPreviousPage?: boolean;
+  onNext: () => void;
+  onPrev: () => void;
 };
 
 export const MainDogs = ({
   data, selectedSize, selectedClassification, selectedColor, selectedCountry,
-  fetchNextPage, fetchPreviousPage, hasNextPage, hasPreviousPage
+  onNext, onPrev,
 }: Props) => {
   const [sortBy, setSortBy] = useState('');
 
-  const allDogs: DogType[] = data.pages.flatMap(page => page.dogs);
-
-  const filteredDogs = allDogs.filter(dog => {
+  const filteredDogs = data.dogs.filter(dog => {
     const sizeMatch =
       selectedSize.length === 0 || selectedSize.includes(dog.size);
 
@@ -67,17 +62,17 @@ export const MainDogs = ({
         </div>
       )}
       <div className="flex justify-center gap-5">
-        <button onClick={() => fetchPreviousPage()}
-          disabled={!hasPreviousPage}
+        <button onClick={onPrev}
+          disabled={data.page === 1}
           className="w-full flex justify-center p-2 bg-blue-500 disabled:opacity-40
-          hover:bg-blue-700 hover:text-white rounded-sm transition-all"
+          hover:bg-blue-700 hover:text-white rounded-sm transition-all cursor-pointer"
         >
           <ChevronLeft />
         </button>
-        <button onClick={() => fetchNextPage()}
-          disabled={!hasNextPage}
+        <button onClick={onNext}
+        disabled={data.page === data.totalPages}
           className="w-full flex justify-center p-2 bg-blue-500 disabled:opacity-40
-          hover:bg-blue-700 hover:text-white rounded-sm transition-all"
+          hover:bg-blue-700 hover:text-white rounded-sm transition-all cursor-pointer"
         >
           <ChevronRight />
         </button>
