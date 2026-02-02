@@ -29,7 +29,7 @@ const Page = () => {
           <Link href={`/${id}`} className="hover:underline">/{dogData?.breed || 'Cachorro'}</Link>
         </div>
         {!dogData
-          ? <Loading/>
+          ? <Loading />
           : <DogDetails dogData={dogData!} />
         }
       </div>
