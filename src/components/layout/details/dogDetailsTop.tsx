@@ -11,14 +11,16 @@ type props = {
 export const DogDetailsTop = ({ dogData }: props) => {
 
   const code = countryToCode[dogData.countryOrigin];
-  const flag = (flags as unknown as Record<string, typeof flags.AD>)[code].emoji;
+  // const flag = (flags as unknown as Record<string, typeof flags.AD>)[code].emoji;
 
   return (
     <div className="w-full h-fit md:h-[400px] relative flex justify-between flex-col md:flex-row z-[1]">
       <BlueBg />
       <div className="flex justify-between flex-col md:flex-row w-full">
         <div className="text-white p-6 md:p-8 flex flex-col gap-5">
-          <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-3">{dogData.breed} <span title={dogData.countryOrigin}>{flag}</span></h1>
+          <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
+            {/* {dogData.breed} <span title={dogData.countryOrigin}>{flag}</span> */}
+          </h1>
           <p>{dogData.classification?.join(' / ')}</p>
           <div className="flex items-end gap-2 text-xs md:text-sm">
             <ArrowUpNarrowWide />

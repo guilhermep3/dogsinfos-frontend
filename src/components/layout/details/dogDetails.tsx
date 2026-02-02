@@ -3,14 +3,14 @@ import { DogDetailsTop } from "./dogDetailsTop";
 import { DogDetailsDesc } from "./dogDetailsDesc";
 
 type props = {
-  dogData: DogType;
+  data: DogType;
 }
-export const DogDetails = ({ dogData }: props) => {
+export const DogDetails = ({ data }: props) => {
 
   return (
     <main className="pt-4 flex flex-col gap-4">
-      <DogDetailsTop dogData={dogData} />
-      <DogDetailsDesc dogData={dogData} />
+      <DogDetailsTop dogData={data} />
+      <DogDetailsDesc dogData={data} />
     </main>
   )
 }

@@ -2,23 +2,18 @@
 import { DogDetails } from "@/components/layout/details/dogDetails";
 import { Header } from "@/components/layout/header";
 import { Loading } from "@/components/loading";
-import { DogType } from "@/types/dogType";
+import { useDog } from "@/hooks/useDog";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const Page = () => {
   const { id } = useParams();
-  const [dogData, setDogData] = useState<DogType | null>(null);
+  const { data } = useDog(Number(id));
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_LINK}${id}`)
-      .then(res => res.json())
-      .then(data => setDogData(data))
-      .catch(err => {
-        console.log("Erro no fetch com id: ", err)
-      });
-  }, [])
+    console.log("data", data)
+  }, [data])
 
   return (
     <div className="bg-zinc-100">
@@ -26,11 +21,11 @@ const Page = () => {
       <div className="containerStyle">
         <div className="flex gap-3 pt-14 text-sm text-blue-900">
           <Link href={'/'} className="hover:underline">/Início</Link>
-          <Link href={`/${id}`} className="hover:underline">/{dogData?.breed || 'Cachorro'}</Link>
+          <Link href={`/${id}`} className="hover:underline">/{data?.breed || 'Cachorro'}</Link>
         </div>
-        {!dogData
+        {!data
           ? <Loading />
-          : <DogDetails dogData={dogData!} />
+          : <DogDetails data={data!} />
         }
       </div>
     </div>

@@ -25,7 +25,7 @@ export const DogCard = ({ dogData }: props) => {
 
   return (
     <Card
-      className="group overflow-hidden p-0! border border-zinc-400 shadow-md hover:shadow-2xl cursor-pointer
+      className="group overflow-hidden p-0! border border-zinc-300 shadow-md hover:shadow-2xl cursor-pointer
       transition-all duration-300 hover:scale-105 bg-white rounded-xl"
       onClick={() => router.push(`/${dogData.id}`)}
     >
