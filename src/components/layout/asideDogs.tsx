@@ -1,14 +1,15 @@
 "use client"
 import { useEffect, useState } from "react";
 import { AsideItem } from "../asideItem";
-import { DogType } from "@/types/dogType";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { useMobileAsideStore } from "@/store/mobileAsideStore";
+import { InfiniteData } from "@tanstack/react-query";
+import { DogsResponse } from "@/hooks/useDogs";
 
 const asideTitleStyle = "p-3 bg-gray-200 border-l-4 border-blue-700 font-bold text-base text-blue-900 cursor-pointer";
 
 type props = {
-  dogsData: DogType[];
+  data: InfiniteData<DogsResponse>;
   selectedSize: string[];
   selectedClassification: string[];
   selectedColor: string[];
@@ -20,31 +21,33 @@ type props = {
 }
 
 export const AsideDogs = ({
-  dogsData,
+  data,
   selectedSize, setSelectedSize,
   selectedClassification, setSelectedClassification,
   selectedColor, setSelectedColor,
   selectedCountry, setSelectedCountry
 }: props) => {
   const [isMobile, setIsMobile] = useState(true);
+  const [showAllClassifications, setShowAllClassifications] = useState(false);
   const [showAllColors, setShowAllColors] = useState(false);
   const [showAllCountries, setShowAllCountries] = useState(false);
   const { isAsideOpen, closeAside } = useMobileAsideStore();
 
   const sizeOrder = ['Pequeno', 'Médio', 'Grande'];
 
-  const uniqueSizes = [...new Set(dogsData.map(dog => dog.size)
-    .sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b))
-  )];
-  const uniqueClassifications = [...new Set(dogsData.flatMap(dog => dog.classification)
-    .sort((a, b) => a.localeCompare(b))
-  )];
-  const uniqueColors = [...new Set(dogsData.flatMap(dog => dog.colors)
-    .sort((a, b) => a.localeCompare(b))
-  )];
-  const uniqueCountries = [...new Set(dogsData.map(dog => dog.countryOrigin)
-    .sort((a, b) => a.localeCompare(b))
-  )];
+  const allDogs = data.pages.flatMap(page => page.dogs);
+
+  const uniqueSizes = [...new Set(allDogs.map(dog => dog.size))]
+    .sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b));
+
+  const uniqueClassifications = [...new Set(allDogs.flatMap(dog => dog.classification))]
+    .sort((a, b) => a.localeCompare(b));
+
+  const uniqueColors = [...new Set(allDogs.flatMap(dog => dog.colors))]
+    .sort((a, b) => a.localeCompare(b));
+
+  const uniqueCountries = [...new Set(allDogs.map(dog => dog.countryOrigin))]
+    .sort((a, b) => a.localeCompare(b));
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,7 +59,7 @@ export const AsideDogs = ({
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [closeAside]);
 
   const renderToggle = (expanded: boolean, toggleFn: () => void) => (
     <button
@@ -86,11 +89,12 @@ export const AsideDogs = ({
         </div>
         <p className={asideTitleStyle}>Classificação</p>
         <div className="py-2">
-          {uniqueClassifications.map(size => (
-            <AsideItem key={size} label={size}
+          {(showAllClassifications ? uniqueClassifications : uniqueClassifications.slice(0, 5)).map(classification => (
+            <AsideItem key={classification} label={classification}
               selectedList={selectedClassification} setSelectedList={setSelectedClassification}
             />
           ))}
+          {uniqueClassifications.length > 5 && renderToggle(showAllClassifications, () => setShowAllClassifications(!showAllClassifications))}
         </div>
         <p className={asideTitleStyle}>Cores</p>
         <div className="py-2">
@@ -99,7 +103,7 @@ export const AsideDogs = ({
               selectedList={selectedColor} setSelectedList={setSelectedColor}
             />
           ))}
-          {uniqueColors.length > 7 && renderToggle(showAllColors, () => setShowAllColors(!showAllColors))}
+          {uniqueColors.length > 5 && renderToggle(showAllColors, () => setShowAllColors(!showAllColors))}
         </div>
         <p className={asideTitleStyle}>País de origem</p>
         <div className="py-2">
@@ -108,7 +112,7 @@ export const AsideDogs = ({
               selectedList={selectedCountry} setSelectedList={setSelectedCountry}
             />
           ))}
-          {uniqueCountries.length > 7 && renderToggle(showAllCountries, () => setShowAllCountries(!showAllCountries))}
+          {uniqueCountries.length > 5 && renderToggle(showAllCountries, () => setShowAllCountries(!showAllCountries))}
         </div>
       </div>
     </aside>
