@@ -1,4 +1,4 @@
-import { DogType } from "@/types/dogType";
+"use client"
 import { MainDogsTop } from "./mainDogsTop";
 import { DogCard } from "../dogCard";
 import { useState } from "react";
@@ -58,7 +58,7 @@ export const MainDogs = ({
         </main>
       ) : (
         <div className="text-center text-zinc-600">
-          Nenhum dog foi encontrado nessas condições
+          Nenhum dog encontrado
         </div>
       )}
       <div className="flex justify-center gap-5">

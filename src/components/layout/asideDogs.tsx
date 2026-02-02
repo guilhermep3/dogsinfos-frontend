@@ -34,18 +34,16 @@ export const AsideDogs = ({
 
   const sizeOrder = ['Pequeno', 'Médio', 'Grande'];
 
-  const allDogs = data.pages.flatMap(page => page.dogs);
-
-  const uniqueSizes = [...new Set(allDogs.map(dog => dog.size))]
+  const uniqueSizes = [...new Set(data.dogs.map(dog => dog.size))]
     .sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b));
 
-  const uniqueClassifications = [...new Set(allDogs.flatMap(dog => dog.classification))]
+  const uniqueClassifications = [...new Set(data.dogs.flatMap(dog => dog.classification))]
     .sort((a, b) => a.localeCompare(b));
 
-  const uniqueColors = [...new Set(allDogs.flatMap(dog => dog.colors))]
+  const uniqueColors = [...new Set(data.dogs.flatMap(dog => dog.colors))]
     .sort((a, b) => a.localeCompare(b));
 
-  const uniqueCountries = [...new Set(allDogs.map(dog => dog.countryOrigin))]
+  const uniqueCountries = [...new Set(data.dogs.map(dog => dog.countryOrigin))]
     .sort((a, b) => a.localeCompare(b));
 
   useEffect(() => {

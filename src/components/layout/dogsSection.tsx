@@ -24,12 +24,12 @@ export const DogsSection = () => {
         ? <Loading /> :
         <div className={containerStyle}>
           <div className="flex items-start">
-            {/* <AsideDogs data={data}
+            <AsideDogs data={data}
               selectedSize={selectedSize} setSelectedSize={setSelectedSize}
               selectedClassification={selectedClassification} setSelectedClassification={setSelectedClassification}
               selectedColor={selectedColor} setSelectedColor={setSelectedColor}
               selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
-            /> */}
+            />
             <MainDogs data={data}
               selectedSize={selectedSize}
               selectedClassification={selectedClassification}
