@@ -3,7 +3,7 @@ import { MainDogsTop } from "./mainDogsTop";
 import { DogCard } from "../dogCard";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { DogsResponse } from "@/hooks/useDogs";
+import { DogsResponse } from "@/api/useDogs";
 
 type Props = {
   data: DogsResponse;

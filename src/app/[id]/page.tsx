@@ -2,7 +2,7 @@
 import { DogDetails } from "@/components/layout/details/dogDetails";
 import { Header } from "@/components/layout/header";
 import { Loading } from "@/components/loading";
-import { useDog } from "@/hooks/useDog";
+import { useDog } from "@/api/useDog";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";

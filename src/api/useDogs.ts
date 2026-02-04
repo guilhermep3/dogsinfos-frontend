@@ -8,10 +8,11 @@ export type DogsResponse = {
 };
 
 export function useDogs(page: number) {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL!;
+
   return useQuery<DogsResponse, Error>({
     queryKey: ['dogs', page],
     queryFn: async () => {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL!;
       const res = await fetch(`${API_URL}/dogs?page=${page}&limit=20`);
 
       if (!res.ok) {

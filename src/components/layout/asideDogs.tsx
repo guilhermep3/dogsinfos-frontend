@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AsideItem } from "../asideItem";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { useMobileAsideStore } from "@/store/mobileAsideStore";
-import { DogsResponse } from "@/hooks/useDogs";
+import { DogsResponse } from "@/api/useDogs";
 
 type props = {
   data: DogsResponse;

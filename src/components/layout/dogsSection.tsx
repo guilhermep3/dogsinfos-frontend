@@ -3,7 +3,7 @@ import { AsideDogs } from "./asideDogs"
 import { useState } from "react"
 import { MainDogs } from "./mainDogs"
 import { Loading } from "../loading"
-import { useDogs } from "@/hooks/useDogs"
+import { useDogs } from "@/api/useDogs"
 
 export const DogsSection = () => {
   const [selectedSize, setSelectedSize] = useState<string[]>([]);
