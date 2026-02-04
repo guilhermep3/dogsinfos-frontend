@@ -11,12 +11,13 @@ export const DogsSection = () => {
   const [selectedColor, setSelectedColor] = useState<string[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<string[]>([]);
   const [page, setPage] = useState(1);
-  const { data, isLoading } = useDogs(page)
+  const { data, isLoading } = useDogs(page);
 
   return (
     <section id="dogs">
-      {!data || isLoading
-        ? <Loading /> :
+      {isLoading || !data ? (
+        <Loading />
+      ) : (
         <div className="containerStyle">
           <div className="flex items-start">
             <AsideDogs data={data}
@@ -35,7 +36,7 @@ export const DogsSection = () => {
             />
           </div>
         </div>
-      }
+      )}
     </section>
   )
 }

@@ -11,10 +11,6 @@ const Page = () => {
   const { id } = useParams();
   const { data } = useDog(Number(id));
 
-  useEffect(() => {
-    console.log("data", data)
-  }, [data])
-
   return (
     <div className="bg-zinc-100">
       <Header />
