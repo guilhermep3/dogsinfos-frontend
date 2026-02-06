@@ -10,8 +10,12 @@ export const DogsSection = () => {
   const [selectedClassification, setSelectedClassification] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState<string[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<string[]>([]);
-  const [page, setPage] = useState(1);
-  const { data, isLoading } = useDogs(page);
+  const [filters, setFilters] = useState({
+    breed: [''], color: [''], country: [''],
+    size: [''], page: 1, limit: 20,
+  });
+  const { data, isLoading } = useDogs(filters);
+  console.log("data", data);
 
   return (
     <section id="dogs">
@@ -31,8 +35,12 @@ export const DogsSection = () => {
               selectedClassification={selectedClassification}
               selectedColor={selectedColor}
               selectedCountry={selectedCountry}
-              onNext={() => setPage(p => Math.min(p + 1, data.totalPages))}
-              onPrev={() => setPage(p => Math.max(p - 1, 1))}
+              onNext={() =>
+                setFilters(prev => ({ ...prev, page: Math.min(prev.page + 1, data.totalPages) }))
+              }
+              onPrev={() =>
+                setFilters(prev => ({ ...prev, page: Math.max(prev.page - 1, 1) }))
+              }
             />
           </div>
         </div>

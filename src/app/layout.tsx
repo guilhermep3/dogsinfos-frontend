@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`antialiased`}>
+      <body className={`antialiased`} cz-shortcut-listen="true">
         <QueryProvider>
           {children}
           <Footer />
