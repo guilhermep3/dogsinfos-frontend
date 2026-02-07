@@ -32,17 +32,21 @@ export const AsideDogs = ({
 
   const sizeOrder = ['Pequeno', 'Médio', 'Grande'];
 
-  const uniqueSizes = [...new Set(data.dogs.map(dog => dog.size))]
-    .sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b));
+  const uniqueSizes = data?.availableOptions?.allSizes ||
+    [...new Set(data.dogs.map(dog => dog.size))]
+      .sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b));
 
-  const uniqueClassifications = [...new Set(data.dogs.flatMap(dog => dog.classification))]
-    .sort((a, b) => a.localeCompare(b));
+  const uniqueClassifications = data?.availableOptions?.allClassifications ||
+    [...new Set(data.dogs.flatMap(dog => dog.classification))]
+      .sort((a, b) => a.localeCompare(b));
 
-  const uniqueColors = [...new Set(data.dogs.flatMap(dog => dog.colors))]
-    .sort((a, b) => a.localeCompare(b));
+  const uniqueColors = data?.availableOptions?.allColors ||
+    [...new Set(data.dogs.flatMap(dog => dog.colors))]
+      .sort((a, b) => a.localeCompare(b));
 
-  const uniqueCountries = [...new Set(data.dogs.map(dog => dog.countryOrigin))]
-    .sort((a, b) => a.localeCompare(b));
+  const uniqueCountries = data?.availableOptions?.allCountries ||
+    [...new Set(data.dogs.map(dog => dog.countryOrigin))]
+      .sort((a, b) => a.localeCompare(b));
 
   useEffect(() => {
     const handleResize = () => {
@@ -120,7 +124,8 @@ export const AsideDogs = ({
                 setSelectedList={setSelectedClassification}
               />
             ))}
-            {uniqueClassifications.length > 5 && renderToggle(showAllClassifications, () => setShowAllClassifications(!showAllClassifications))}
+            {uniqueClassifications.length > 5 &&
+              renderToggle(showAllClassifications, () => setShowAllClassifications(!showAllClassifications))}
           </div>
         </div>
         <div className="filter-group">
@@ -135,7 +140,8 @@ export const AsideDogs = ({
                 setSelectedList={setSelectedColor}
               />
             ))}
-            {uniqueColors.length > 5 && renderToggle(showAllColors, () => setShowAllColors(!showAllColors))}
+            {uniqueColors.length > 5 &&
+              renderToggle(showAllColors, () => setShowAllColors(!showAllColors))}
           </div>
         </div>
         <div className="filter-group">
