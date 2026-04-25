@@ -10,7 +10,6 @@ export type QueryFilters = {
   limit?: number;
 };
 
-
 export type DogsResponse = {
   dogs: DogType[];
   page: number;
@@ -52,7 +51,7 @@ export function useDogs(filters: QueryFilters) {
         params.append('size', filters.size.join(','));
       }
 
-      const res = await fetch(`${API_URL}/dogs/home?${params.toString()}`);
+      const res = await fetch(`${API_URL}/dogs?${params.toString()}`);
 
       if (!res.ok) {
         throw new Error('Network response was not ok');
