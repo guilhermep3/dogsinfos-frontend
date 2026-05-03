@@ -6,7 +6,7 @@ export interface DogType {
   countryOrigin: string;
   colors: string[];
   lifeExpectancy: string;
-  adultWeightKg: string;
+  adultWeightKg: { male: string; female: string };
   classification: string[];
   description: string;
 };

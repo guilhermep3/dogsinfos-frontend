@@ -42,40 +42,48 @@ export const DogDetailsTop = ({ dogData }: props) => {
               </span>
             ))}
           </div>
+          <div className="relative block md:hidden bg-white/10 backdrop-blur-sm p-2 rounded-3xl border border-white/20">
+            <Image src={`/dogs/${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
+              className="w-full h-full object-cover rounded-2xl shadow-2xl"
+              width={500} height={400}
+              priority
+            />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+            <div className="card-white-blur">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-blue-500/30 rounded-lg">
                   <ArrowUpNarrowWide className="w-5 h-5" />
                 </div>
                 <p className="text-xs text-white font-medium uppercase tracking-wide">Tamanho</p>
               </div>
-              <p className="text-xl font-bold">{dogData.size}</p>
+              <p className="text-lg font-bold">{dogData.size}</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+            <div className="card-white-blur">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-amber-500/30 rounded-lg">
                   <Weight className="w-5 h-5" />
                 </div>
                 <p className="text-xs text-white font-medium uppercase tracking-wide">Peso</p>
               </div>
-              <p className="text-xl font-bold">{dogData.adultWeightKg}</p>
+              <p className="text-lg font-bold">♂️ {dogData.adultWeightKg.male}</p>
+              <p className="text-lg font-bold">♀️ {dogData.adultWeightKg.female}</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300">
+            <div className="card-white-blur">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-green-500/30 rounded-lg">
                   <Cake className="w-5 h-5" />
                 </div>
                 <p className="text-xs text-white font-medium uppercase tracking-wide">Expectativa</p>
               </div>
-              <p className="text-xl font-bold">{dogData.lifeExpectancy}</p>
+              <p className="text-lg font-bold">{dogData.lifeExpectancy}</p>
             </div>
           </div>
         </div>
         <div className="p-6 md:p-8 md:w-1/2 flex items-center justify-center">
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-blue-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
-            <div className="relative bg-white/10 backdrop-blur-sm p-2 rounded-3xl border border-white/20">
+            <div className="relative hidden md:block bg-white/10 backdrop-blur-sm p-2 rounded-3xl border border-white/20">
               <Image src={`/dogs/${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
                 className="w-full h-full object-cover rounded-2xl shadow-2xl"
                 width={500} height={400}

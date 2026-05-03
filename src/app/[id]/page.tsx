@@ -5,7 +5,6 @@ import { Loading } from "@/components/loading";
 import { useDog } from "@/api/useDog";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect } from "react";
 
 const Page = () => {
   const { id } = useParams();
@@ -15,9 +14,14 @@ const Page = () => {
     <div className="bg-zinc-100">
       <Header />
       <div className="containerStyle">
-        <div className="flex gap-3 pt-14 text-sm text-blue-900">
-          <Link href={'/'} className="hover:underline">/Início</Link>
-          <Link href={`/${id}`} className="hover:underline">/{data?.breed || 'Cachorro'}</Link>
+        <div className="flex items-center gap-2 pt-14 text-sm text-gray-500">
+          <Link href="/" className="hover:text-blue-600 hover:underline">
+            Início
+          </Link>
+          <span>/</span>
+          <Link href={`/${id}`} className="text-gray-700 font-medium hover:text-blue-600">
+            {data?.breed || 'Cachorro'}
+          </Link>
         </div>
         {!data
           ? <Loading />
