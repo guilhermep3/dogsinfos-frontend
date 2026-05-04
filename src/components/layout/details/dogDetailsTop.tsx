@@ -43,7 +43,7 @@ export const DogDetailsTop = ({ dogData }: props) => {
             ))}
           </div>
           <div className="relative block md:hidden bg-white/10 backdrop-blur-sm p-2 rounded-3xl border border-white/20">
-            <Image src={`/dogs/${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
+            <Image src={`${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
               className="w-full h-full object-cover rounded-2xl shadow-2xl"
               width={500} height={400}
               priority
@@ -82,10 +82,14 @@ export const DogDetailsTop = ({ dogData }: props) => {
         </div>
         <div className="p-6 md:p-8 md:w-1/2 flex items-center justify-center">
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-blue-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
-            <div className="relative hidden md:block bg-white/10 backdrop-blur-sm p-2 rounded-3xl border border-white/20">
-              <Image src={`/dogs/${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
-                className="w-full h-full object-cover rounded-2xl shadow-2xl"
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-blue-500/20
+              rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500">
+            </div>
+            <div className="relative hidden md:block bg-white/10 backdrop-blur-sm p-2 rounded-3xl
+              border border-white/20"
+            >
+              <Image src={`${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
+                className="object-cover rounded-2xl shadow-2xl"
                 width={500} height={400}
                 priority
               />

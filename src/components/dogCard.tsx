@@ -31,10 +31,12 @@ export const DogCard = ({ dogData }: props) => {
     >
       <CardContent className="p-0 flex flex-col">
         <div className="relative w-full h-56 sm:h-48 md:h-40 2xl:h-52 overflow-hidden">
-          <Image src={`/dogs/${dogData.image}`} alt={'imagem do cachorro ' + dogData.breed}
-            width={400} height={400}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
+          {dogData.image && (
+            <Image src={`${dogData.image}`} alt={'imagem do cachorro ' + dogData.breed}
+              width={400} height={400}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
         <div className="p-4 flex flex-col gap-3">
