@@ -10,7 +10,7 @@ export const HeroSection = () => {
     >
       <div className="absolute top-20 right-10 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-amber-200/20 rounded-full blur-3xl"></div>
-      <div className="containerStyle flex flex-col gap-6 md:flex-row h-full min-h-screen pb-0 md:pb-0 relative z-10">
+      <div className="containerStyle flex flex-col gap-2 md:flex-row h-full min-h-screen pb-0 md:pb-0 relative z-10">
         <div className="flex-1 flex flex-col justify-center gap-8 text-center md:text-start">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-800 leading-tight">

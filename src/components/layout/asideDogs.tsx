@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import { AsideItem } from "../asideItem";
-import { ChevronDown, ChevronUp, X } from "lucide-react";
+import { ChevronDown, ChevronUp, Funnel, X } from "lucide-react";
 import { useMobileAsideStore } from "@/store/mobileAsideStore";
 import { DogsResponse } from "@/api/useDogs";
 
@@ -90,9 +90,7 @@ export const AsideDogs = ({
       {!isMobile && (
         <div className="p-6 border-b border-slate-200 bg-gradient-to-br from-blue-50 to-white rounded-t-2xl">
           <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-            </svg>
+            <Funnel />
             Filtros
           </h3>
         </div>
@@ -169,7 +167,9 @@ export const AsideDogs = ({
               setSelectedColor([]);
               setSelectedCountry([]);
             }}
-            className="w-full py-3 px-4 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white font-medium rounded-xl transition-all duration-300 shadow-md hover:shadow-lg"
+            className="w-full py-3 px-4 text-white font-medium rounded-xl 
+              bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800
+              transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
           >
             Limpar filtros
           </button>

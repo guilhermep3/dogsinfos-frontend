@@ -1,5 +1,6 @@
 import { GrayBg } from "@/components/svg/grayBg";
 import { DogType } from "@/types/dogType";
+import { dogColorMap } from "@/utils/dogColorMap";
 import { FileText, Palette } from "lucide-react";
 
 type props = {
@@ -51,7 +52,9 @@ export const DogDetailsDesc = ({ dogData }: props) => {
                   <span key={index}
                     className="inline-flex items-center px-4 py-2.5 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl text-slate-700 font-medium border shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
                   >
-                    <span className="w-3 h-3 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 mr-2"></span>
+                    <span className="w-4 h-4 rounded-full mr-2 border border-zinc-300"
+                      style={{ backgroundColor: dogColorMap[color] }}>
+                    </span>
                     {color}
                   </span>
                 ))}

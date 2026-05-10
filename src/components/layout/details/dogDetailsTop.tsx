@@ -15,20 +15,20 @@ export const DogDetailsTop = ({ dogData }: props) => {
   const flag = (flags as unknown as Record<string, typeof flags.AD>)[code]?.emoji;
 
   return (
-    <div className="w-full h-fit md:h-[480px] relative flex justify-between flex-col md:flex-row rounded-3xl overflow-hidden shadow-2xl">
+    <div className="w-full h-fit relative flex justify-between flex-col lg:flex-row rounded-3xl overflow-hidden shadow-2xl">
       <BlueBg />
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/95 via-blue-800/85 to-blue-900/95 z-0"></div>
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
-      <div className="flex justify-between flex-col md:flex-row w-full relative z-10">
-        <div className="text-white p-8 md:p-12 flex flex-col gap-6 md:w-1/2 justify-center">
+      <div className="flex justify-between flex-col lg:flex-row w-full relative z-10">
+        <div className="text-white p-8 lg:p-12 flex flex-col gap-6 lg:w-1/2 justify-center">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full w-fit">
               <MapPin className="w-4 h-4 text-amber-400" />
               <span className="text-sm font-medium">{dogData.countryOrigin}</span>
               {flag && <span className="text-xl">{flag}</span>}
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            <h1 className="text-3xl lg:text-4xl font-bold leading-tight">
               {dogData.breed}
             </h1>
             <div className="w-24 h-1.5 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full"></div>
@@ -42,7 +42,7 @@ export const DogDetailsTop = ({ dogData }: props) => {
               </span>
             ))}
           </div>
-          <div className="relative block md:hidden bg-white/10 backdrop-blur-sm p-2 rounded-3xl border border-white/20">
+          <div className="relative block lg:hidden bg-white/10 backdrop-blur-sm p-2 rounded-3xl border border-white/20">
             <Image src={`${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
               className="w-full h-full object-cover rounded-2xl shadow-2xl"
               width={500} height={400}
@@ -80,12 +80,12 @@ export const DogDetailsTop = ({ dogData }: props) => {
             </div>
           </div>
         </div>
-        <div className="p-6 md:p-8 md:w-1/2 flex items-center justify-center">
+        <div className="p-6 lg:p-8 lg:w-1/2 flex items-center justify-center">
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-blue-500/20
               rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500">
             </div>
-            <div className="relative hidden md:block bg-white/10 backdrop-blur-sm p-2 rounded-3xl
+            <div className="relative hidden lg:block bg-white/10 backdrop-blur-sm p-2 rounded-3xl
               border border-white/20"
             >
               <Image src={`${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
