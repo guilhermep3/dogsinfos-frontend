@@ -20,6 +20,12 @@ export const MainDogs = ({
   onNext, onPrev,
 }: Props) => {
   const [sortBy, setSortBy] = useState('');
+  console.log('MainDogs data:', data);
+  console.log("data.page", data.pagination.page)
+  console.log("data.totalPages", data.pagination.totalPages)
+
+  console.log("data.page === 1",data.pagination.page === 1)
+  console.log("data.page === data.totalPages",data.pagination.page === data.pagination.totalPages)
 
   const filteredDogs = data.dogs.filter(dog => {
     const sizeMatch =
@@ -63,14 +69,14 @@ export const MainDogs = ({
       )}
       <div className="flex justify-center gap-5">
         <button onClick={onPrev}
-          disabled={data.page === 1}
+          disabled={data.pagination.page === 1}
           className="w-full flex justify-center p-2 bg-blue-500 disabled:opacity-40
           hover:bg-blue-700 hover:text-white rounded-sm transition-all cursor-pointer"
         >
           <ChevronLeft />
         </button>
         <button onClick={onNext}
-          disabled={data.page === data.totalPages}
+          disabled={data.pagination.page === data.pagination.totalPages}
           className="w-full flex justify-center p-2 bg-blue-500 disabled:opacity-40
           hover:bg-blue-700 hover:text-white rounded-sm transition-all cursor-pointer"
         >

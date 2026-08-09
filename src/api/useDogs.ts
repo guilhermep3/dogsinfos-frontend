@@ -12,9 +12,15 @@ export type QueryFilters = {
 
 export type DogsResponse = {
   dogs: DogType[];
-  page: number;
-  totalPages: number;
-  total: number;
+  pagination: {
+    page: number;
+    totalPages: number;
+    total: number;
+    limit: number;
+  };
+  // page: number;
+  // totalPages: number;
+  // total: number;
   availableOptions?: {
     sizes: string[];
     classifications: string[];

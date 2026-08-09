@@ -25,6 +25,8 @@ export const DogsSection = () => {
     limit: 20,
   });
   const { data, isLoading } = useDogs(filters);
+  console.log("data:", data);
+  console.log("filters:", filters);
 
   const updateFilter = useCallback((key: keyof Filters, value: string[]) => {
     setFilters(prev => ({
@@ -58,7 +60,7 @@ export const DogsSection = () => {
               selectedColor={filters.color ?? []}
               selectedCountry={filters.country ?? []}
               onNext={() =>
-                setFilters(prev => ({ ...prev, page: Math.min(prev.page + 1, data.totalPages) }))
+                setFilters(prev => ({ ...prev, page: Math.min(prev.page + 1, data.pagination.totalPages) }))
               }
               onPrev={() =>
                 setFilters(prev => ({ ...prev, page: Math.max(prev.page - 1, 1) }))
