@@ -16,11 +16,10 @@ export const AsideItem = ({ label, selectedList, setSelectedList }: Props) => {
   }
 
   return (
-    <label className="flex items-center gap-2 py-2 px-4 cursor-pointer hover:bg-zinc-200 transition-colors"
-      onClick={toggleChecked}
+    <label
+      className="flex items-center gap-2 py-2 px-4 cursor-pointer hover:bg-zinc-200 transition-colors"
     >
-      <input
-        type="checkbox"
+      <input type="checkbox"
         checked={isSelected}
         onChange={toggleChecked}
         className="accent-blue-900 w-4 h-4 cursor-pointer"
