@@ -20,12 +20,6 @@ export const MainDogs = ({
   onNext, onPrev,
 }: Props) => {
   const [sortBy, setSortBy] = useState('');
-  console.log('MainDogs data:', data);
-  console.log("data.page", data.pagination.page)
-  console.log("data.totalPages", data.pagination.totalPages)
-
-  console.log("data.page === 1",data.pagination.page === 1)
-  console.log("data.page === data.totalPages",data.pagination.page === data.pagination.totalPages)
 
   const filteredDogs = data.dogs.filter(dog => {
     const sizeMatch =

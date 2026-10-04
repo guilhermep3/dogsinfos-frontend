@@ -25,8 +25,6 @@ export const DogsSection = () => {
     limit: 20,
   });
   const { data, isLoading } = useDogs(filters);
-  console.log("data:", data);
-  console.log("filters:", filters);
 
   const updateFilter = useCallback((key: keyof Filters, value: string[]) => {
     setFilters(prev => ({
