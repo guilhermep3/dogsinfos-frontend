@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 
 const Page = () => {
-  const { id } = useParams();
-  const { data } = useDog(Number(id));
+  const { slug } = useParams();
+  const { data } = useDog(String(slug));
 
   return (
     <div className="bg-zinc-100">
@@ -19,7 +19,7 @@ const Page = () => {
             Início
           </Link>
           <span>/</span>
-          <Link href={`/${id}`} className="text-gray-700 font-medium hover:text-blue-600">
+          <Link href={`/${slug}`} className="text-gray-700 font-medium hover:text-blue-600">
             {data?.breed || 'Cachorro'}
           </Link>
         </div>

@@ -29,7 +29,7 @@ export const DogCard = ({ dogData }: props) => {
     <Card
       className="group overflow-hidden p-0! border shadow-md hover:shadow-2xl hover:shadow-zinc-400 cursor-pointer
       transition-all duration-300 hover:scale-105 bg-white rounded-xl"
-      onClick={() => router.push(`/${dogData.id}`)}
+      onClick={() => router.push(`/${dogData.slug}`)}
     >
       <CardContent className="p-0 flex flex-col">
         <div className="relative w-full h-56 sm:h-48 md:h-40 2xl:h-52 overflow-hidden">
