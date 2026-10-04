@@ -14,6 +14,8 @@ export const DogDetailsTop = ({ dogData }: props) => {
   const code = countryToCode[dogData.countryOrigin];
   const flag = (flags as unknown as Record<string, typeof flags.AD>)[code]?.emoji;
 
+  const image_url = `${process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_URL}${dogData.image}`;
+
   return (
     <div className="w-full h-fit relative flex justify-between flex-col lg:flex-row rounded-3xl overflow-hidden shadow-2xl">
       <BlueBg />
@@ -43,7 +45,7 @@ export const DogDetailsTop = ({ dogData }: props) => {
             ))}
           </div>
           <div className="relative block lg:hidden bg-white/10 backdrop-blur-sm p-2 rounded-3xl border border-white/20">
-            <Image src={`${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
+            <Image src={image_url} alt={dogData.breed ?? 'imagem do cachorro'}
               className="w-full h-full object-cover rounded-2xl shadow-2xl"
               width={500} height={400}
               priority
@@ -66,8 +68,12 @@ export const DogDetailsTop = ({ dogData }: props) => {
                 </div>
                 <p className="text-xs text-white font-medium uppercase tracking-wide">Peso</p>
               </div>
-              <p className="text-lg font-bold">♂️ {dogData.adultWeightKg.male}</p>
-              <p className="text-lg font-bold">♀️ {dogData.adultWeightKg.female}</p>
+              <p className="text-lg font-bold">
+                ♂️ {dogData.adultWeightKg.male.min} - {dogData.adultWeightKg.male.max} kg
+              </p>
+              <p className="text-lg font-bold">
+                ♀️ {dogData.adultWeightKg.female.min} - {dogData.adultWeightKg.female.max} kg
+              </p>
             </div>
             <div className="card-white-blur">
               <div className="flex items-center gap-3 mb-2">
@@ -76,7 +82,9 @@ export const DogDetailsTop = ({ dogData }: props) => {
                 </div>
                 <p className="text-xs text-white font-medium uppercase tracking-wide">Expectativa</p>
               </div>
-              <p className="text-lg font-bold">{dogData.lifeExpectancy}</p>
+              <p className="text-lg font-bold">
+                {dogData.lifeExpectancy.min} - {dogData.lifeExpectancy.max} anos
+              </p>
             </div>
           </div>
         </div>
@@ -88,7 +96,7 @@ export const DogDetailsTop = ({ dogData }: props) => {
             <div className="relative hidden lg:block bg-white/10 backdrop-blur-sm p-2 rounded-3xl
               border border-white/20"
             >
-              <Image src={`${dogData.image}`} alt={dogData.breed ?? 'imagem do cachorro'}
+              <Image src={image_url} alt={dogData.breed ?? 'imagem do cachorro'}
                 className="object-cover rounded-2xl shadow-2xl"
                 width={500} height={400}
                 priority
