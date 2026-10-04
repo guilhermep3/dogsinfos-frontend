@@ -23,6 +23,8 @@ export const DogCard = ({ dogData }: props) => {
     if (dogData.size === 'Grande') return 'G';
   }
 
+  const image_url = `${process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_URL}${dogData.image}`;
+
   return (
     <Card
       className="group overflow-hidden p-0! border shadow-md hover:shadow-2xl hover:shadow-zinc-400 cursor-pointer
@@ -32,7 +34,7 @@ export const DogCard = ({ dogData }: props) => {
       <CardContent className="p-0 flex flex-col">
         <div className="relative w-full h-56 sm:h-48 md:h-40 2xl:h-52 overflow-hidden">
           {dogData.image && (
-            <Image src={`${dogData.image}`} alt={'imagem do cachorro ' + dogData.breed}
+            <Image src={image_url} alt={dogData.breed ?? 'imagem do cachorro'}
               width={400} height={400}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
