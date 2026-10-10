@@ -50,7 +50,11 @@ export const DogDetailsDesc = ({ dogData }: props) => {
               <div className="flex flex-wrap gap-3">
                 {dogData.colors?.map((color, index) => (
                   <span key={index}
-                    className="inline-flex items-center px-4 py-2.5 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl text-slate-700 font-medium border shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
+                    className="
+                      inline-flex items-center px-2 py-1 md:px-4 md:py-2.5 
+                      bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl 
+                      text-slate-700 text-sm md:text-base border shadow-sm 
+                      hover:shadow-md hover:scale-105 transition-all duration-200"
                   >
                     <span className="w-4 h-4 rounded-full mr-2 border border-zinc-300"
                       style={{ backgroundColor: dogColorMap[color] }}>
