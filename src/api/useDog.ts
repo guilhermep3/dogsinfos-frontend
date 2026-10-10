@@ -5,7 +5,7 @@ export function useDog(slug: string) {
   const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 
   return useQuery<DogType, Error>({
-    queryKey: ['dog'],
+    queryKey: ['dog', slug],
     queryFn: async () => {
       const res = await fetch(`${API_URL}/dogs/${slug}`);
 
