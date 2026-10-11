@@ -11,6 +11,11 @@ export interface DogType {
     male: { min: number; max: number };
     female: { min: number; max: number }
   };
+  coat: {
+    density: number;
+    length: number;
+    shedding: number;
+  };
   classification: string[];
   description: string;
 };
